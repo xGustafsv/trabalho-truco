@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title> Truco </title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Truco</h1>
+
+  <div class="vira">
+    <h2>Vira:</h2>
+    <div id="carta-vira" class="card">?</div>
+  </div>
+  <div class="cards">
+    <div>
+      <h2>sua mão</h2>
+      <div id="cartas-jogador1" class="cartas"></div>
+    </div>
+    <div>
+      <h2>mão oponente</h2>
+      <div id="cartas-jogador2" class="cartas"></div>
+    </div>
+  </div>
+  
+  <div class="botoes">
+    <button onclick="proximaRodada()">Próxima Rodada</button>
+  </div>
+  <div class="botoes">
+    <button onclick="proximaRodada()">Próxima Rodada</button>
+    <button onclick="pedirTruco()">Pedir Truco</button>
+  </div>
+  
+  <!-- Elemento para exibir o TRUCO -->
+  <div id="truco-overlay" class="truco-overlay" style="display:none;">TRUCOOOO!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

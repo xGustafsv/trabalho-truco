@@ -1,0 +1,87 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+  
+  body {
+    background-image: url('https://i.pinimg.com/736x/a7/9c/69/a79c695d9087b3fdcd2449558696090e.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .truco-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  h1 {
+    margin-bottom: 10px;
+  }
+  
+  .pontuacao {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .cartas {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .card {
+    width: 60px;
+    height: 90px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid #333;
+    border-radius: 8px;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.1);
+  }
+  
+  .card.manilha {
+    background-color: gold;
+    border: 2px solid #b8860b;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .vira {
+    margin-top: 20px;
+  }
+  
+  .botoes {
+    margin-top: 30px;
+  }
