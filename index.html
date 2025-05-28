@@ -1,66 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Truco</title>
-  <link rel="stylesheet" href="style.css" />
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1" />
+ <title>Truco Mineiro</title>
+ <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>🃏 Truco 🃏</h1>
+ <div class="game-container">
+ <h1>🃏 Truco Mineiro</h1>
 
-  <div class="pontuacao">
-    <div>Você: <span id="score-jogador">0</span></div>
-    <div>IA: <span id="score-maquina">0</span></div>
-  </div>
+ <!-- Pontuação -->
+ <div class="pontuacao">
+ <div class="score-item">
+ <span class="player-name">Você</span>
+ <span class="score" id="score-jogador">0</span>
+ </div>
+ <div class="score-divider">×</div>
+ <div class="score-item">
+ <span class="player-name">Máquina</span>
+ <span class="score" id="score-maquina">0</span>
+ </div>
+ </div>
 
-  <div class="valor-rodada">
-    Valor da Rodada: <span id="valor-rodada">1</span> ponto(s)
-  </div>
+ <!-- Pontos da rodada atual -->
+ <div class="pontos-rodada">
+ <span>Pontos em jogo: <strong id="pontos-jogo">1</strong></span>
+ </div>
 
-  <div class="vira">
-    <h2 class="section-title">Vira:</h2>
-    <div id="carta-vira" class="card">?</div>
-  </div>
+ <!-- Cartas do oponente -->
+ <div class="area-cartas oponente">
+ <h3>Máquina</h3>
+ <div id="cartas-maquina" class="cartas"></div>
+ </div>
 
-  <!-- Área central para mostrar cartas jogadas -->
-  <div id="area-central" class="area-central">
-    <div id="carta-jogador-jogada" class="carta-jogada"></div>
-    <div id="carta-ia-jogada" class="carta-jogada"></div>
-  </div>
 
-  <div class="cards">
-    <div>
-      <h2 class="section-title">Sua Mão</h2>
-      <div class="jogador-atual" id="vez-jogador" style="display:none;">Sua vez!</div>
-      <div id="cartas-jogador" class="cartas"></div>
-    </div>
-    <div>
-      <h2 class="section-title">Mão da IA</h2>
-      <div class="jogador-atual" id="vez-maquina" style="display:none;">Vez da IA!</div>
-      <div id="cartas-maquina" class="cartas"></div>
-    </div>
-  </div>
-  
-  <div class="botoes">
-    <button onclick="proximaRodada()">Nova Rodada</button>
-    <button class="btn-truco" onclick="pedirTruco()">Pedir Truco!</button>
-  </div>
+ <div class="mesa-central">
+ <div class="carta-vira-container">
+ <h4>Vira</h4>
+ <div id="carta-vira" class="card"></div>
+ <div class="manilha-info">
+ Manilha: <span id="manilha-nome">-</span>
+ </div>
+ </div>
 
-  <!-- Overlays -->
-  <div id="truco-overlay" class="truco-overlay" style="display:none;">
-    TRUCOOOO!
-  </div>
+ <!-- Cartas jogadas -->
+ <div class="cartas-jogadas">
+ <div id="carta-jogada-maquina" class="carta-jogada maquina"></div>
+ <div id="carta-jogada-jogador" class="carta-jogada jogador"></div>
+ </div>
+ </div>
 
-  <div id="truco-buttons" class="truco-buttons">
-    <h3 id="truco-message">A IA pediu truco!</h3>
-    <div class="botoes">
-      <button class="btn-aceitar" onclick="aceitarTruco()">Aceitar</button>
-      <button class="btn-aumentar" onclick="aumentarTruco()" id="btn-aumentar">Aumentar!</button>
-      <button class="btn-correr" onclick="correrTruco()">Desistir</button>
-    </div>
-  </div>
+ <!-- Cartas do jogador -->
+ <div class="area-cartas jogador">
+ <h3>Suas cartas</h3>
+ <div id="cartas-jogador" class="cartas"></div>
+ </div>
 
-  <script src="script.js"></script>
+ <!-- Botões de ação -->
+ <div class="botoes">
+ <button id="btn-truco" onclick="pedirTruco()" class="btn-truco">Truco! 🔥</button>
+ <button onclick="proximaRodada()" class="btn-proxima">Nova Rodada</button>
+ </div>
+
+ <!-- Informações da rodada -->
+ <div class="info-rodada">
+ <span id="vez-de">Sua vez de jogar</span>
+ </div>
+ </div>
+
+ <!-- Overlay do Truco -->
+ <div id="truco-overlay" class="truco-overlay" style="display:none;">
+ <div class="truco-content">
+ <h2 id="truco-titulo">TRUCOOOO! 🔥</h2>
+ <p id="truco-info">A máquina pediu truco (+3 pontos)</p>
+ <div class="truco-botoes">
+ <button onclick="responderTruco('aceitar')" class="btn-aceitar">Aceitar ✓</button>
+ <button onclick="responderTruco('aumentar')" class="btn-aumentar">Retruco! 🔥</button>
+ <button onclick="responderTruco('desistir')" class="btn-desistir">Desistir ✗</button>
+ </div>
+ </div>
+ </div>
+
+ <!-- Overlay de resultado -->
+ <div id="resultado-overlay" class="resultado-overlay" style="display:none;">
+ <div class="resultado-content">
+ <h2 id="resultado-titulo"></h2>
+ <p id="resultado-info"></p>
+ <button onclick="fecharResultado()" class="btn-ok">OK</button>
+ </div>
+ </div>
+
+ <script src="script.js"></script>
 </body>
 </html>
