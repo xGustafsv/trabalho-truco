@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Truco</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🃏 Truco 🃏</h1>
+
+  <div class="pontuacao">
+    <div>Você: <span id="score-jogador">0</span></div>
+    <div>IA: <span id="score-maquina">0</span></div>
+  </div>
+
+  <div class="valor-rodada">
+    Valor da Rodada: <span id="valor-rodada">1</span> ponto(s)
+  </div>
+
+  <div class="vira">
+    <h2 class="section-title">Vira:</h2>
+    <div id="carta-vira" class="card">?</div>
+  </div>
+
+  <!-- Área central para mostrar cartas jogadas -->
+  <div id="area-central" class="area-central">
+    <div id="carta-jogador-jogada" class="carta-jogada"></div>
+    <div id="carta-ia-jogada" class="carta-jogada"></div>
+  </div>
+
+  <div class="cards">
+    <div>
+      <h2 class="section-title">Sua Mão</h2>
+      <div class="jogador-atual" id="vez-jogador" style="display:none;">Sua vez!</div>
+      <div id="cartas-jogador" class="cartas"></div>
+    </div>
+    <div>
+      <h2 class="section-title">Mão da IA</h2>
+      <div class="jogador-atual" id="vez-maquina" style="display:none;">Vez da IA!</div>
+      <div id="cartas-maquina" class="cartas"></div>
+    </div>
+  </div>
+  
+  <div class="botoes">
+    <button onclick="proximaRodada()">Nova Rodada</button>
+    <button class="btn-truco" onclick="pedirTruco()">Pedir Truco!</button>
+  </div>
+
+  <!-- Overlays -->
+  <div id="truco-overlay" class="truco-overlay" style="display:none;">
+    TRUCOOOO!
+  </div>
+
+  <div id="truco-buttons" class="truco-buttons">
+    <h3 id="truco-message">A IA pediu truco!</h3>
+    <div class="botoes">
+      <button class="btn-aceitar" onclick="aceitarTruco()">Aceitar</button>
+      <button class="btn-aumentar" onclick="aumentarTruco()" id="btn-aumentar">Aumentar!</button>
+      <button class="btn-correr" onclick="correrTruco()">Desistir</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

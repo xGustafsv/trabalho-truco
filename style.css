@@ -1,0 +1,282 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #0f4c3a, #2d8a5f);
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  color: #fff;
+}
+
+.pontuacao {
+  background: rgba(0,0,0,0.3);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+  max-width: 400px;
+  margin: 0 auto 20px;
+}
+
+.pontuacao div {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.valor-rodada {
+  background: rgba(255,215,0,0.2);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.vira {
+  margin: 20px 0;
+}
+
+.vira h2 {
+  margin-bottom: 10px;
+  color: #ffd700;
+}
+
+/* Área central para mostrar cartas jogadas */
+.area-central {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin: 30px 0;
+  min-height: 120px;
+  background: rgba(0,0,0,0.2);
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.carta-jogada {
+  display: none;
+  animation: cartaJogada 0.5s ease-in-out;
+}
+
+@keyframes cartaJogada {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.5) translateY(-30px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1.2) translateY(0); 
+  }
+}
+
+.cards {
+  display: flex;
+  justify-content: space-around;
+  margin: 30px 0;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.cartas {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 70px;
+  height: 100px;
+  background: linear-gradient(145deg, #ffffff, #f0f0f0);
+  border: 2px solid #333;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  color: #333;
+  font-weight: bold;
+}
+
+.card:hover {
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 6px 6px 15px rgba(0,0,0,0.4);
+}
+
+.card.manilha {
+  background: linear-gradient(145deg, #ffd700, #ffed4e);
+  border: 3px solid #b8860b;
+  color: #8b4513;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 215, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0); }
+}
+
+.card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.top, .bottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.bottom {
+  transform: rotate(180deg);
+}
+
+.card-body {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.botoes {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+button {
+  background: linear-gradient(145deg, #4CAF50, #45a049);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+}
+
+.btn-truco {
+  background: linear-gradient(145deg, #ff6b6b, #ff5252);
+}
+
+.btn-aceitar {
+  background: linear-gradient(145deg, #4CAF50, #45a049);
+}
+
+.btn-aumentar {
+  background: linear-gradient(145deg, #ff9800, #f57c00);
+}
+
+.btn-correr {
+  background: linear-gradient(145deg, #f44336, #d32f2f);
+}
+
+.truco-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  font-size: 4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: trucoAnimation 0.5s ease-in-out;
+}
+
+@keyframes trucoAnimation {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.2); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.truco-buttons {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.9);
+  padding: 30px;
+  border-radius: 15px;
+  z-index: 1001;
+  display: none;
+}
+
+.truco-buttons h3 {
+  margin-bottom: 20px;
+  color: #ffd700;
+}
+
+.section-title {
+  color: #ffd700;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+}
+
+.jogador-atual {
+  background: rgba(255,215,0,0.2);
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Carta jogada no centro */
+.carta-central {
+  border: 3px solid #ff6b6b !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.5) !important;
+}
+
+@media (max-width: 768px) {
+  .cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .card {
+    width: 60px;
+    height: 85px;
+  }
+  
+  h1 {
+    font-size: 2em;
+  }
+  
+  .area-central {
+    gap: 15px;
+    padding: 15px;
+  }
+}
